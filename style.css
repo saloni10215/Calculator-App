@@ -7,7 +7,7 @@
 body {
     font-family: Arial, sans-serif;
     background: #f4f4f4;
-    height: 100vh;
+    min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -15,19 +15,21 @@ body {
 
 .calculator {
     background: white;
+    width: 320px;
     padding: 20px;
     border-radius: 15px;
-    width: 320px;
     box-shadow: 0 5px 15px rgba(0,0,0,0.1);
 }
 
 #display {
     width: 100%;
     height: 60px;
+    margin-bottom: 15px;
     font-size: 24px;
     text-align: right;
-    margin-bottom: 15px;
     padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
 }
 
 .buttons {
@@ -39,15 +41,24 @@ body {
 button {
     padding: 20px;
     font-size: 18px;
-    cursor: pointer;
     border: none;
     border-radius: 10px;
+    cursor: pointer;
+    background: #e5e7eb;
 }
 
 button:hover {
     opacity: 0.9;
 }
 
+#backspace {
+    grid-column: span 2;
+    background: #f59e0b;
+    color: white;
+}
+
 #clear {
-    grid-column: span 4;
+    grid-column: span 2;
+    background: #ef4444;
+    color: white;
 }

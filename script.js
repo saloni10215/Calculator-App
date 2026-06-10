@@ -1,4 +1,3 @@
-// Calculator logic will be added next
 const display = document.getElementById("display");
 const buttons = document.querySelectorAll("button");
 
@@ -11,6 +10,10 @@ buttons.forEach(button => {
         if (value === "C") {
 
             display.value = "";
+
+        } else if (value === "⌫") {
+
+            display.value = display.value.slice(0, -1);
 
         } else if (value === "=") {
 
