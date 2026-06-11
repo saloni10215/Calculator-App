@@ -1,6 +1,8 @@
 const display = document.getElementById("display");
-const buttons = document.querySelectorAll("button");
+const buttons = document.querySelectorAll(".buttons button");
+const darkModeBtn = document.getElementById("darkModeBtn");
 
+// Calculator Buttons
 buttons.forEach(button => {
 
     button.addEventListener("click", function () {
@@ -36,6 +38,8 @@ buttons.forEach(button => {
     });
 
 });
+
+// Keyboard Support
 document.addEventListener("keydown", function (event) {
 
     const key = event.key;
@@ -54,19 +58,49 @@ document.addEventListener("keydown", function (event) {
     } else if (key === "Enter") {
 
         try {
+
             display.value = eval(display.value);
+
         } catch {
+
             display.value = "Error";
+
         }
 
     } else if (key === "Backspace") {
 
-        display.value =
-            display.value.slice(0, -1);
+        display.value = display.value.slice(0, -1);
 
     } else if (key === "Escape") {
 
         display.value = "";
+
+    }
+
+});
+
+// Load Saved Theme
+if (localStorage.getItem("darkMode") === "enabled") {
+
+    document.body.classList.add("dark-mode");
+    darkModeBtn.textContent = "☀️ Light Mode";
+
+}
+
+// Dark Mode Toggle
+darkModeBtn.addEventListener("click", function () {
+
+    document.body.classList.toggle("dark-mode");
+
+    if (document.body.classList.contains("dark-mode")) {
+
+        localStorage.setItem("darkMode", "enabled");
+        darkModeBtn.textContent = "☀️ Light Mode";
+
+    } else {
+
+        localStorage.setItem("darkMode", "disabled");
+        darkModeBtn.textContent = "🌙 Dark Mode";
 
     }
 
