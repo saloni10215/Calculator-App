@@ -124,3 +124,26 @@ button:hover {
 .dark-mode #clear {
     background: #ef4444;
 }
+h3 {
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+#history {
+    list-style: none;
+    max-height: 150px;
+    overflow-y: auto;
+}
+
+#history li {
+    background: #f3f4f6;
+    padding: 10px;
+    margin-bottom: 8px;
+    border-radius: 10px;
+    font-size: 14px;
+}
+
+.dark-mode #history li {
+    background: #374151;
+    color: white;
+}

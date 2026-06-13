@@ -1,6 +1,14 @@
 const display = document.getElementById("display");
 const buttons = document.querySelectorAll(".buttons button");
 const darkModeBtn = document.getElementById("darkModeBtn");
+const historyList = document.getElementById("history");
+
+// Load History
+let history = JSON.parse(localStorage.getItem("history")) || [];
+
+history.forEach(item => {
+    addHistory(item);
+});
 
 // Calculator Buttons
 buttons.forEach(button => {
@@ -21,7 +29,23 @@ buttons.forEach(button => {
 
             try {
 
-                display.value = eval(display.value);
+                const expression = display.value;
+
+                const result = eval(expression);
+
+                display.value = result;
+
+                const historyItem =
+                    `${expression} = ${result}`;
+
+                history.unshift(historyItem);
+
+                localStorage.setItem(
+                    "history",
+                    JSON.stringify(history)
+                );
+
+                addHistory(historyItem);
 
             } catch {
 
@@ -59,7 +83,23 @@ document.addEventListener("keydown", function (event) {
 
         try {
 
-            display.value = eval(display.value);
+            const expression = display.value;
+
+            const result = eval(expression);
+
+            display.value = result;
+
+            const historyItem =
+                `${expression} = ${result}`;
+
+            history.unshift(historyItem);
+
+            localStorage.setItem(
+                "history",
+                JSON.stringify(history)
+            );
+
+            addHistory(historyItem);
 
         } catch {
 
@@ -105,3 +145,14 @@ darkModeBtn.addEventListener("click", function () {
     }
 
 });
+
+// Add History Item to UI
+function addHistory(text) {
+
+    const li = document.createElement("li");
+
+    li.textContent = text;
+
+    historyList.prepend(li);
+
+}
